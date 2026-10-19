@@ -3,137 +3,147 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZØRØ DZ Market01 - لوحة التحكم والمتجر</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>ZØRØ DZ Market01 - تسوق بأمان وسهولة</title>
+    <!-- تضمين مكتبة Tailwind CSS للتصميم الاحترافي والسريع -->
+    <script src="https://tailwindcss.com"></script>
+    <!-- تضمين مكتبة أيقونات Font Awesome لجميع الأيقونات في المتجر -->
+    <link rel="stylesheet" href="https://cloudflare.com">
+    <!-- مكتبة Supabase للاتصال بقاعدة البيانات الخاصة بك -->
+    <script src="https://jsdelivr.net"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap');
-        body { font-family: 'Cairo', sans-serif; }
+        @import url('https://googleapis.com');
+        body { font-family: 'Cairo', sans-serif; background-color: #f3f4f6; }
+        .custom-scrollbar::-webkit-scrollbar { height: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #f1f1f1; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #10b981; border-radius: 4px; }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body class="text-gray-800">
 
-    <!-- Top Navbar -->
-    <header class="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
-        <div class="max-w-7xl x-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-            <div class="flex items-center gap-4">
-                <div class="bg-green-600 text-white p-2 rounded-lg font-bold text-xl tracking-wider">ZØRØ DZ</div>
-                <span class="text-sm font-semibold text-green-700 bg-green-50 px-2 py-1 rounded border border-green-200">Market01 v2.0</span>
-            </div>
+    <!-- 1️⃣ شريط الإعلان العلوي الرفيع -->
+    <div class="bg-[#0b3c22] text-white text-xs py-2 px-4 flex justify-between items-center">
+        <div class="flex items-center space-x-4 space-x-reverse">
+            <button class="hover:underline font-bold">DA</button>
+            <span>|</span>
+            <button class="hover:underline opacity-80">FR</button>
+        </div>
+        <div class="font-medium text-center flex-1 hidden md:block">
+            تسوق بأمان وسهولة من أي مكان في الجزائر
+        </div>
+        <div class="font-bold tracking-wider text-[#10b981]">ZØRØ DZ Market01</div>
+    </div>
+
+    <!-- 2️⃣ الهيدر الرئيسي (الشعار، البحث، والحساب) -->
+    <header class="bg-white border-b border-gray-100 py-4 px-4 md:px-8 sticky top-0 z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
             
-            <!-- Search Bar -->
-            <div class="w-1/3 relative hidden md:block">
-                <input type="text" placeholder="ابحث عن المنتجات، الهواتف، السيارات..." class="w-full bg-gray-100 text-sm pl-4 pr-10 py-2 rounded-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-green-500 focus:bg-white transition-all text-right">
-                <i class="fas fa-search absolute right-3 top-2.5 text-gray-400"></i>
+            <!-- الشعار -->
+            <div class="flex items-center space-x-2 space-x-reverse">
+                <div class="bg-[#10b981] p-2.5 rounded-2xl text-white shadow-md shadow-emerald-100">
+                    <i class="fa-solid fa-bag-shopping text-2xl"></i>
+                </div>
+                <div>
+                    <h1 class="text-2xl font-bold tracking-tight text-gray-900">ZØRØ DZ <span class="text-[#10b981]">Market01</span></h1>
+                    <p class="text-[10px] text-gray-400 tracking-widest uppercase">Électronique • Maison • Mode • Auto • Plus</p>
+                </div>
             </div>
 
-            <!-- Icons -->
-            <div class="flex items-center gap-4">
-                <button class="relative p-2 text-gray-600 hover:text-green-600 transition-colors">
-                    <i class="fas fa-shopping-basket text-xl"></i>
-                    <span class="absolute -top-1 -right-1 bg-green-600 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-bold">3</span>
+            <!-- شريط البحث العريض التفاعلي -->
+            <div class="w-full md:w-1/2 relative">
+                <input type="text" id="searchInput" placeholder="ابحث عن منتج، فئة أو علامة تجارية..." class="w-full border-2 border-gray-200 rounded-full py-2.5 pr-5 pl-12 focus:outline-none focus:border-[#10b981] transition-colors text-sm shadow-sm bg-gray-50/50">
+                <button onclick="searchProducts()" class="absolute left-1.5 top-1/2 -translate-y-1/2 bg-[#00aa6c] text-white p-2.5 rounded-full hover:bg-[#008f5a] transition-colors w-10 h-10 flex items-center justify-center">
+                    <i class="fa-solid fa-magnifying-glass text-sm"></i>
                 </button>
-                <button class="p-2 text-gray-600 hover:text-green-600 transition-colors">
-                    <i class="fas fa-box text-xl"></i>
+            </div>
+
+            <!-- أزرار التحكم والسلة والطلبات -->
+            <div class="flex items-center space-x-6 space-x-reverse text-gray-600">
+                <button class="flex flex-col items-center hover:text-[#10b981] transition-colors">
+                    <i class="fa-regular fa-user text-xl mb-1"></i>
+                    <span class="text-xs font-semibold">حسابي</span>
                 </button>
-                <div class="flex items-center gap-2 border-r pr-4 border-gray-200">
-                    <div class="w-8 h-8 rounded-full bg-green-100 text-green-700 flex items-center justify-center font-bold">Z</div>
-                    <span class="text-xs hidden sm:block font-medium">قاعدة Supabase متصلة ✅</span>
-                </div>
+                <button class="flex flex-col items-center hover:text-[#10b981] transition-colors relative">
+                    <i class="fa-regular fa-heart text-xl mb-1"></i>
+                    <span class="text-xs font-semibold">المفضلة</span>
+                    <span id="fav-count" class="absolute -top-1 -left-2 bg-red-500 text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">0</span>
+                </button>
+                <button onclick="toggleCartModal()" class="flex flex-col items-center hover:text-[#10b981] transition-colors relative">
+                    <i class="fa-solid fa-cart-shopping text-xl mb-1 text-gray-700"></i>
+                    <span class="text-xs font-semibold">السلة</span>
+                    <span id="cart-count" class="absolute -top-1 -left-2 bg-[#10b981] text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">0</span>
+                </button>
             </div>
         </div>
     </header>
 
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <!-- Categories Chips -->
-        <div class="flex gap-3 overflow-x-auto pb-4 mb-8 scrollbar-hide">
-            <button class="bg-green-600 text-white px-4 py-2 rounded-full text-sm font-medium shadow-sm whitespace-nowrap">الكل</button>
-            <button class="bg-white hover:bg-green-50 text-gray-700 hover:text-green-600 px-4 py-2 rounded-full text-sm font-medium border border-gray-200 transition-all whitespace-nowrap"><i class="fas fa-laptop mr-1 text-gray-400"></i> إلكترونيات</button>
-            <button class="bg-white hover:bg-green-50 text-gray-700 hover:text-green-600 px-4 py-2 rounded-full text-sm font-medium border border-gray-200 transition-all whitespace-nowrap"><i class="fas fa-fingerprint mr-1 text-gray-400"></i> منتجات رقمية</button>
-            <button class="bg-white hover:bg-green-50 text-gray-700 hover:text-green-600 px-4 py-2 rounded-full text-sm font-medium border border-gray-200 transition-all whitespace-nowrap"><i class="fas fa-tshirt mr-1 text-gray-400"></i> ملابس</button>
-            <button class="bg-white hover:bg-green-50 text-gray-700 hover:text-green-600 px-4 py-2 rounded-full text-sm font-medium border border-gray-200 transition-all whitespace-nowrap"><i class="fas fa-shoe-prints mr-1 text-gray-400"></i> أحذية</button>
-            <button class="bg-white hover:bg-green-50 text-gray-700 hover:text-green-600 px-4 py-2 rounded-full text-sm font-medium border border-gray-200 transition-all whitespace-nowrap"><i class="fas fa-car mr-1 text-gray-400"></i> سيارات</button>
-            <button class="bg-white hover:bg-green-50 text-gray-700 hover:text-green-600 px-4 py-2 rounded-full text-sm font-medium border border-gray-200 transition-all whitespace-nowrap"><i class="fas fa-couch mr-1 text-gray-400"></i> أثاث</button>
+    <!-- 3️⃣ شريط الأقسام الدائري الذكي -->
+    <nav class="bg-white border-b border-gray-200 py-3 overflow-hidden shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 flex items-center space-x-4 space-x-reverse overflow-x-auto custom-scrollbar whitespace-nowrap">
+            <!-- زر جميع الفئات الجانبي -->
+            <button class="bg-[#0b3c22] text-white px-4 py-2 rounded-xl text-sm font-semibold flex items-center space-x-2 space-x-reverse shadow-md shrink-0">
+                <i class="fa-solid fa-bars"></i>
+                <span>جميع الفئات</span>
+            </button>
+            
+            <!-- أزرار الأقسام الدائرية المستوحاة بالكامل من الصورة -->
+            <div id="categories-container" class="flex space-x-2 space-x-reverse">
+                <!-- سيتم ملؤها عبر جافاسكريبت تلقائياً بتصنيفات متميزة تشمل المنتجات الرقمية الكثيرة -->
+            </div>
+        </div>
+    </nav>
+
+    <!-- 4️⃣ البانر الإعلاني العريض المتكامل -->
+    <section class="max-w-7xl mx-auto px-4 mt-6">
+        <div class="bg-gradient-to-l from-[#052e16] via-[#0f5132] to-[#198754] rounded-3xl p-6 md:p-10 text-white relative overflow-hidden flex flex-col md:flex-row items-center justify-between shadow-xl min-h-[340px]">
+            
+            <!-- النصوص والأزرار -->
+            <div class="z-10 text-right space-y-4 md:max-w-xl">
+                <span class="bg-[#10b981] text-white text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wider shadow">عروض حصرية 2026</span>
+                <h2 class="text-3xl md:text-5xl font-extrabold leading-tight">كل ما تحتاجه <br><span class="text-[#22c55e]">في مكان واحد</span></h2>
+                <p class="text-sm text-gray-200 leading-relaxed font-light">الإلكترونيات - سيارات - أثاث - أحذية - أزياء ومنتجات رقمية ومفاتيح اشتراك بأفضل الأسعار وضمان حقيقي مع توصيل سريع.</p>
+                <div class="pt-2">
+                    <button class="bg-[#10b981] hover:bg-[#059669] text-white px-8 py-3.5 rounded-xl font-bold transition-all transform hover:scale-105 flex items-center space-x-3 space-x-reverse shadow-lg shadow-emerald-900/40">
+                        <span>تسوق الآن</span>
+                        <i class="fa-solid fa-cart-arrow-down"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- صور مجمعة فوتوغرافية احترافية تعاكس التصميم لتبدو كالصورة المرفقة تماماً -->
+            <div class="relative w-full md:w-1/2 h-64 md:h-80 mt-6 md:mt-0 flex items-center justify-center">
+                <div class="absolute inset-0 bg-[url('https://unsplash.com')] bg-cover bg-center opacity-10 rounded-2xl"></div>
+                <!-- عرض رمزي فوتوغرافي للمنتجات المتنوعة -->
+                <div class="flex items-center space-x-[-20px] space-x-reverse z-10 transform scale-90 md:scale-100">
+                    <img src="https://unsplash.com" class="w-32 h-44 object-cover rounded-2xl shadow-2xl border-4 border-white/20 transform -rotate-12 bg-white" alt="Phone">
+                    <img src="https://unsplash.com" class="w-40 h-48 object-cover rounded-2xl shadow-2xl border-4 border-white/20 z-20 transform translate-y-4 bg-white" alt="Shoes">
+                    <img src="https://unsplash.com" class="w-44 h-44 object-cover rounded-2xl shadow-2xl border-4 border-white/20 z-10 transform rotate-6 bg-white" alt="Sofa">
+                </div>
+                <!-- لوحة شعار المتجر الجانبي الداخلي للبانر -->
+                <div class="absolute bottom-2 left-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-xl text-left border border-white/10 hidden lg:block">
+                    <div class="text-xs font-bold">ZØRØ DZ</div>
+                    <div class="text-[9px] opacity-75">جودة • ثقة • أفضل الأسعار</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5️⃣ عنوان المنتجات والفرز التلقائي -->
+    <main class="max-w-7xl mx-auto px-4 py-8">
+        <div class="flex justify-between items-center mb-6">
+            <div class="flex items-center space-x-2 space-x-reverse">
+                <i class="fa-solid fa-fire text-red-500 text-xl animate-pulse"></i>
+                <h3 id="section-title" class="text-xl font-bold text-gray-900">منتجات مميزة</h3>
+            </div>
+            <button onclick="resetFilters()" class="text-sm font-semibold text-[#10b981] hover:underline flex items-center space-x-1 space-x-reverse">
+                <span>عرض الكل</span>
+                <i class="fa-solid fa-angle-left text-xs"></i>
+            </button>
         </div>
 
-        <!-- Products Grid with Realistic Stock Unsplash Photos -->
-        <h2 class="text-xl font-bold mb-6 text-gray-900 border-r-4 border-green-600 pr-3">أحدث المنتجات المتوفرة في المتجر</h2>
-        
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            
-            <!-- Product 1: Phone -->
-            <div class="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm hover:shadow-md transition-all group">
-                <div class="h-48 overflow-hidden bg-gray-100 relative">
-                    <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=600&q=80" alt="هاتف ذكي" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-                    <span class="absolute top-2 right-2 bg-green-600 text-white text-xs px-2 py-1 rounded font-bold">إلكترونيات</span>
-                </div>
-                <div class="p-4">
-                    <h3 class="font-bold text-gray-900 text-base mb-1">هاتف ذكي Ultra 5G</h3>
-                    <p class="text-xs text-gray-500 mb-3 line-clamp-2">شاشة عالية الدقة، معالج خارق، بطارية تدوم طويلاً مع شحن سريع.</p>
-                    <div class="flex items-center justify-between pt-2 border-t border-gray-100">
-                        <span class="text-green-700 font-bold text-lg">85,000 دج</span>
-                        <button class="bg-green-50 text-green-700 hover:bg-green-600 hover:text-white p-2 rounded-lg transition-colors text-sm font-medium">
-                            <i class="fas fa-cart-plus"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Product 2: Shoe -->
-            <div class="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm hover:shadow-md transition-all group">
-                <div class="h-48 overflow-hidden bg-gray-100 relative">
-                    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&q=80" alt="حذاء رياضي" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-                    <span class="absolute top-2 right-2 bg-green-600 text-white text-xs px-2 py-1 rounded font-bold">أحذية</span>
-                </div>
-                <div class="p-4">
-                    <h3 class="font-bold text-gray-900 text-base mb-1">حذاء رياضي Pro Comfort</h3>
-                    <p class="text-xs text-gray-500 mb-3 line-clamp-2">تصميم مريح ومناسب للجري والتمارين اليومية بألوان عصرية.</p>
-                    <div class="flex items-center justify-between pt-2 border-t border-gray-100">
-                        <span class="text-green-700 font-bold text-lg">6,500 دج</span>
-                        <button class="bg-green-50 text-green-700 hover:bg-green-600 hover:text-white p-2 rounded-lg transition-colors text-sm font-medium">
-                            <i class="fas fa-cart-plus"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Product 3: Car -->
-            <div class="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm hover:shadow-md transition-all group">
-                <div class="h-48 overflow-hidden bg-gray-100 relative">
-                    <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=600&q=80" alt="سيارة" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-                    <span class="absolute top-2 right-2 bg-green-600 text-white text-xs px-2 py-1 rounded font-bold">سيارات</span>
-                </div>
-                <div class="p-4">
-                    <h3 class="font-bold text-gray-900 text-base mb-1">سيارة سيدان عائلية 2024</h3>
-                    <p class="text-xs text-gray-500 mb-3 line-clamp-2">حالة ممتازة، محرك اقتصادي، كافة كماليات الأمان والراحة.</p>
-                    <div class="flex items-center justify-between pt-2 border-t border-gray-100">
-                        <span class="text-green-700 font-bold text-lg">3,200,000 دج</span>
-                        <button class="bg-green-50 text-green-700 hover:bg-green-600 hover:text-white p-2 rounded-lg transition-colors text-sm font-medium">
-                            <i class="fas fa-cart-plus"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Product 4: Sofa/Furniture -->
-            <div class="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm hover:shadow-md transition-all group">
-                <div class="h-48 overflow-hidden bg-gray-100 relative">
-                    <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=600&q=80" alt="أريكة" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-                    <span class="absolute top-2 right-2 bg-green-600 text-white text-xs px-2 py-1 rounded font-bold">أثاث</span>
-                </div>
-                <div class="p-4">
-                    <h3 class="font-bold text-gray-900 text-base mb-1">أريكة مودرن مريحة</h3>
-                    <p class="text-xs text-gray-500 mb-3 line-clamp-2">مصنوعة من أجود أنواع الأقمشة والخشب المتين لتناسب صالونك الفخم.</p>
-                    <div class="flex items-center justify-between pt-2 border-t border-gray-100">
-                        <span class="text-green-700 font-bold text-lg">45,000 دج</span>
-                        <button class="bg-green-50 text-green-700 hover:bg-green-600 hover:text-white p-2 rounded-lg transition-colors text-sm font-medium">
-                            <i class="fas fa-cart-plus"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
+        <!-- شبكة المنتجات (المنتجات العادية + المنتجات الرقمية الكثيرة جداً) -->
+        <div id="products-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
+            <!-- يتم تعبئة بطاقات المنتجات الاحترافية بواسطة الجافاسكريبت أدناه -->
         </div>
     </main>
-</body>
-</html>
+
+    <!-- 6️⃣ شريط المميزات والخدمات السفلي -->
