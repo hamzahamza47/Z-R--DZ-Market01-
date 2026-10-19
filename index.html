@@ -2,29 +2,206 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#087f5b">
 <title>ZØRØ DZ Market01 | المتجر الجزائري</title>
-
 <style>
+:root{--green:#087f5b;--green2:#0b9b70;--ink:#202820;--muted:#68736d;--bg:#f4f7f5;--line:#e2e9e5;--white:#fff}
 *{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#f5f7f6;color:#202820}
-header{background:#087f5b;color:white;padding:18px 12px;text-align:center}
-header h1{margin:0;font-size:25px}
-header p{margin:8px 0 0;font-size:14px}
-nav{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;padding:12px;background:white;position:sticky;top:0;z-index:5;box-shadow:0 2px 5px #ddd}
-button,select{border:0;border-radius:8px;padding:11px;cursor:pointer;font-size:14px}
-nav button,.primary{background:#087f5b;color:white}
+body{margin:0;font-family:Arial,Tahoma,sans-serif;background:var(--bg);color:var(--ink)}
+button,input,select{font:inherit}
+button{cursor:pointer}
+header{background:var(--green);color:white;padding:16px max(16px,calc((100% - 1100px)/2))}
+.brand{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand h1{font-size:24px;margin:0}
+.brand p{margin:6px 0 0;font-size:13px;opacity:.9}
+.header-actions{display:flex;gap:8px;align-items:center}
+.btn{border:0;border-radius:10px;padding:10px 13px;font-weight:bold}
+.btn-light{background:#fff;color:var(--green)}
+.btn-green{background:var(--green);color:#fff}
 main{max-width:1100px;margin:auto;padding:16px}
-.hero{background:#d9f5e8;border-radius:15px;padding:25px 18px;margin-bottom:18px}
-.hero h2{color:#086644;margin-top:0}
-input{padding:12px;border:1px solid #ddd;border-radius:8px;width:100%;font-size:15px}
-.categories{display:flex;gap:8px;overflow-x:auto;padding:12px 0}
-.categories button{background:white;border:1px solid #ddd;white-space:nowrap}
-h2.section{font-size:21px}
-.products{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-.card{background:white;border-radius:12px;overflow:hidden;box-shadow:0 2px 8px #0000000c}
-.card img{width:100%;height:135px;object-fit:cover;background:#eee}
-.card .info{padding:12px}
-.card h3{font-size:16px;margin:0 0 8px}
-.price{
+.hero{background:linear-gradient(135deg,#e0f5eb,#fff);border:1px solid #d2ecdf;border-radius:18px;padding:22px;margin:4px 0 18px}
+.hero h2{font-size:25px;margin:0 0 9px;color:#075e45}
+.hero p{line-height:1.8;margin:0 0 15px;color:#40594c}
+.searchrow{display:flex;gap:8px;flex-wrap:wrap}
+input,select{border:1px solid var(--line);border-radius:10px;padding:12px;background:#fff;min-width:0}
+#search{flex:1;min-width:180px}
+.section-title{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:20px 0 12px}
+.section-title h2{font-size:20px;margin:0}
+.categories{display:flex;gap:8px;overflow-x:auto;padding:2px 0 10px}
+.cat{border:1px solid var(--line);background:#fff;border-radius:22px;padding:9px 14px;white-space:nowrap;color:#34443b}
+.cat.active{background:var(--green);color:white;border-color:var(--green)}
+.products{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 3px 12px #00000008}
+.product-art{height:145px;display:flex;align-items:center;justify-content:center;background:#edf5f0;font-size:58px}
+.info{padding:12px}
+.info h3{font-size:16px;margin:0 0 8px}
+.info p{font-size:13px;line-height:1.6;color:var(--muted);margin:0 0 10px;min-height:40px}
+.price{color:var(--green);font-size:18px;font-weight:bold;margin:8px 0 12px}
+.add{width:100%;border:0;border-radius:9px;background:var(--green);color:#fff;padding:10px;font-weight:bold}
+.add:hover,.btn-green:hover{background:#066448}
+.panel{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px;margin-top:20px}
+.panel h2{font-size:19px;margin:0 0 12px}
+.cart-list{display:grid;gap:9px}
+.cart-item{display:flex;align-items:center;justify-content:space-between;gap:10px;border-bottom:1px solid var(--line);padding:8px 0}
+.cart-item:last-child{border-bottom:0}
+.cart-item small{display:block;color:var(--muted);margin-top:5px}
+.remove{background:#fff0f0;color:#a52828;border:0;border-radius:8px;padding:7px 10px}
+.total{font-size:19px;font-weight:bold;margin:15px 0}
+.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.form-grid input,.form-grid select{width:100%}
+.form-grid .wide{grid-column:1/-1}
+.note{font-size:13px;line-height:1.7;color:var(--muted)}
+.orders{display:grid;gap:8px}
+.order-card{border:1px solid var(--line);border-radius:10px;padding:12px}
+.empty{padding:18px;text-align:center;color:var(--muted);background:#fff;border:1px dashed #cddbd2;border-radius:12px}
+footer{text-align:center;padding:24px 12px;color:var(--muted);font-size:13px}
+.hidden{display:none!important}
+@media(max-width:800px){.products{grid-template-columns:repeat(2,minmax(0,1fr))}.product-art{height:125px}.brand h1{font-size:21px}}
+@media(max-width:420px){main{padding:11px}.products{gap:9px}.info{padding:10px}.info h3{font-size:14px}.product-art{height:110px;font-size:48px}.hero{padding:16px}.hero h2{font-size:22px}.form-grid{grid-template-columns:1fr}.form-grid .wide{grid-column:auto}}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">
+    <div><h1>ZØRØ DZ Market01</h1><p>متجرك الجزائري للمنتجات الإلكترونية والرقمية</p></div>
+    <div class="header-actions">
+      <button class="btn btn-light" onclick="document.getElementById('cartSection').scrollIntoView({behavior:'smooth'})">🛒 السلة (<span id="cartCount">0</span>)</button>
+      <button class="btn btn-light" id="langBtn" type="button">Français</button>
+    </div>
+  </div>
+</header>
+<main>
+  <section class="hero">
+    <h2 id="heroTitle">اكتشف منتجاتك المفضلة</h2>
+    <p id="heroText">منتجات إلكترونية ورقمية في مكان واحد. تصفّح المنتجات وأضف ما تريد إلى السلة.</p>
+    <div class="searchrow">
+      <input id="search" type="search" placeholder="ابحث عن منتج..." aria-label="البحث عن منتج">
+      <button class="btn btn-green" id="searchBtn" type="button">بحث</button>
+    </div>
+  </section>
+
+  <div class="section-title"><h2 id="catalogTitle">تسوّق حسب الفئة</h2><span id="productCount" class="note"></span></div>
+  <div class="categories" id="categories"></div>
+  <div class="products" id="products"></div>
+
+  <section class="panel" id="cartSection">
+    <h2 id="cartTitle">🛒 سلة المشتريات</h2>
+    <div id="cartItems" class="cart-list"></div>
+    <div class="total" id="total">المجموع: 0 دج</div>
+    <h3 id="checkoutTitle">إتمام الطلب</h3>
+    <form id="checkoutForm">
+      <div class="form-grid">
+        <input id="customerName" required maxlength="100" placeholder="الاسم الكامل">
+        <input id="phone" required type="tel" maxlength="30" placeholder="رقم الهاتف">
+        <select id="wilaya" required>
+          <option value="">اختر الولاية</option>
+          <option>أدرار</option><option>الشلف</option><option>الأغواط</option><option>أم البواقي</option><option>باتنة</option><option>بجاية</option><option>بسكرة</option><option>بشار</option><option>البليدة</option><option>البويرة</option><option>تمنراست</option><option>تبسة</option><option>تلمسان</option><option>تيارت</option><option>تيزي وزو</option><option>الجزائر</option><option>الجلفة</option><option>جيجل</option><option>سطيف</option><option>سعيدة</option><option>سكيكدة</option><option>سيدي بلعباس</option><option>عنابة</option><option>قالمة</option><option>قسنطينة</option><option>المدية</option><option>مستغانم</option><option>المسيلة</option><option>معسكر</option><option>ورقلة</option><option>وهران</option><option>البيض</option><option>إليزي</option><option>برج بوعريريج</option><option>بومرداس</option><option>الطارف</option><option>تندوف</option><option>تيسمسيلت</option><option>الوادي</option><option>خنشلة</option><option>سوق أهراس</option><option>تيبازة</option><option>ميلة</option><option>عين الدفلى</option><option>النعامة</option><option>عين تموشنت</option><option>غرداية</option><option>غليزان</option><option>تيميمون</option><option>برج باجي مختار</option><option>أولاد جلال</option><option>بني عباس</option><option>عين صالح</option><option>عين قزام</option><option>تقرت</option><option>جانت</option><option>المغير</option><option>المنيعة</option>
+        </select>
+        <input id="address" required maxlength="200" placeholder="العنوان بالتفصيل">
+        <select id="payment" required>
+          <option value="">طريقة الدفع</option><option value="BaridiMob">بريدي موب</option><option value="CCP">بريد الجزائر (CCP)</option><option value="Bank">تحويل بنكي</option><option value="OnDelivery">الدفع عند الاستلام (إن توفر)</option>
+        </select>
+        <div class="wide"><button class="btn btn-green" type="submit">تأكيد الطلب على هذا الجهاز</button></div>
+      </div>
+    </form>
+    <p class="note">تنبيه: هذه نسخة تجريبية. الطلبات تُحفظ في متصفح هذا الجهاز فقط؛ لم يتم ربط قاعدة بيانات أو بوابة دفع حقيقية. لا ترسل أموالًا قبل التحقق من البائع وبيانات الدفع.</p>
+  </section>
+
+  <section class="panel">
+    <h2 id="ordersTitle">📦 طلباتي على هذا الجهاز</h2>
+    <div id="ordersList" class="orders"></div>
+    <p class="note">الطلبات التجريبية ليست مرئية للإدارة ولا تُرسل إلى المتجر حتى يتم ربط قاعدة بيانات آمنة.</p>
+  </section>
+</main>
+<footer>© <span id="year"></span> ZØRØ DZ Market01 — نسخة تجريبية</footer>
+<script>
+const productsData = [
+ {id:1,name:"سماعات لاسلكية",fr:"Écouteurs sans fil",cat:"electronics",price:3200,icon:"🎧",desc:"سماعات للاستماع اليومي والمكالمات.",descfr:"Écouteurs pour musique et appels."},
+ {id:2,name:"ساعة ذكية",fr:"Montre connectée",cat:"electronics",price:5800,icon:"⌚",desc:"ساعة ذكية بتصميم عصري.",descfr:"Montre connectée au design moderne."},
+ {id:3,name:"شاحن سريع",fr:"Chargeur rapide",cat:"electronics",price:1800,icon:"🔌",desc:"شاحن للاستخدام اليومي.",descfr:"Chargeur pratique pour le quotidien."},
+ {id:4,name:"لوحة مفاتيح",fr:"Clavier",cat:"electronics",price:4200,icon:"⌨️",desc:"لوحة مفاتيح للعمل والدراسة.",descfr:"Clavier pour le travail et les études."},
+ {id:5,name:"كتاب إلكتروني",fr:"Livre numérique",cat:"digital",price:900,icon:"📚",desc:"كتاب رقمي تجريبي؛ تحقق من المحتوى قبل الشراء.",descfr:"Livre numérique de démonstration."},
+ {id:6,name:"قالب تصميم",fr:"Modèle de design",cat:"digital",price:1200,icon:"🎨",desc:"قالب رقمي قابل للتخصيص.",descfr:"Modèle numérique personnalisable."},
+ {id:7,name:"دورة تعليمية",fr:"Cours en ligne",cat:"digital",price:2500,icon:"🎓",desc:"محتوى تعليمي رقمي تجريبي.",descfr:"Contenu éducatif numérique."},
+ {id:8,name:"حقيبة يومية",fr:"Sac quotidien",cat:"general",price:2900,icon:"🎒",desc:"حقيبة للاستخدام اليومي.",descfr:"Sac pratique pour tous les jours."}
+];
+const categoriesData = [
+ {id:"all",ar:"الكل",fr:"Tout"},
+ {id:"electronics",ar:"إلكترونيات",fr:"Électronique"},
+ {id:"digital",ar:"منتجات رقمية",fr:"Produits numériques"},
+ {id:"general",ar:"منتجات أخرى",fr:"Autres produits"}
+];
+let cart = load("zoro_cart",[]);
+let orders = load("zoro_orders",[]);
+let activeCategory = "all";
+let lang = "ar";
+function load(key,fallback){try{const v=JSON.parse(localStorage.getItem(key));return Array.isArray(v)?v:fallback}catch(e){return fallback}}
+function save(key,value){try{localStorage.setItem(key,JSON.stringify(value))}catch(e){}}
+function money(value){return new Intl.NumberFormat(lang==="ar"?"ar-DZ":"fr-DZ").format(value)+" دج"}
+function renderCategories(){
+ const box=document.getElementById("categories");box.innerHTML="";
+ categoriesData.forEach(c=>{const b=document.createElement("button");b.className="cat"+(activeCategory===c.id?" active":"");b.textContent=c[lang];b.type="button";b.onclick=()=>{activeCategory=c.id;renderCategories();renderProducts()};box.appendChild(b)});
+}
+function renderProducts(){
+ const box=document.getElementById("products");box.innerHTML="";
+ const query=document.getElementById("search").value.trim().toLowerCase();
+ const filtered=productsData.filter(p=>(activeCategory==="all"||p.cat===activeCategory)&&((p.name+" "+p.fr+" "+p.desc+" "+p.descfr).toLowerCase().includes(query)));
+ document.getElementById("productCount").textContent=filtered.length+" "+(lang==="ar"?"منتج":"produit(s)");
+ if(!filtered.length){box.innerHTML='<div class="empty" style="grid-column:1/-1">لا توجد منتجات مطابقة للبحث.</div>';return}
+ filtered.forEach(p=>{
+  const card=document.createElement("article");card.className="card";
+  const art=document.createElement("div");art.className="product-art";art.textContent=p.icon;art.setAttribute("aria-hidden","true");
+  const info=document.createElement("div");info.className="info";
+  const title=document.createElement("h3");title.textContent=lang==="ar"?p.name:p.fr;
+  const desc=document.createElement("p");desc.textContent=lang==="ar"?p.desc:p.descfr;
+  const price=document.createElement("div");price.className="price";price.textContent=money(p.price);
+  const add=document.createElement("button");add.className="add";add.type="button";add.textContent=lang==="ar"?"أضف إلى السلة":"Ajouter au panier";add.onclick=()=>addToCart(p.id);
+  info.append(title,desc,price,add);card.append(art,info);box.appendChild(card);
+ });
+}
+function addToCart(id){const found=cart.find(x=>x.id===id);if(found)found.qty++;else cart.push({id,qty:1});save("zoro_cart",cart);renderCart();document.getElementById("cartSection").scrollIntoView({behavior:"smooth",block:"start"})}
+function renderCart(){
+ const box=document.getElementById("cartItems");box.innerHTML="";let total=0,count=0;
+ cart.forEach(item=>{const p=productsData.find(x=>x.id===item.id);if(!p)return;total+=p.price*item.qty;count+=item.qty;
+ const row=document.createElement("div");row.className="cart-item";
+ const label=document.createElement("div");label.textContent=(lang==="ar"?p.name:p.fr)+" × "+item.qty;
+ const sub=document.createElement("small");sub.textContent=money(p.price*item.qty);label.appendChild(sub);
+ const remove=document.createElement("button");remove.className="remove";remove.type="button";remove.textContent=lang==="ar"?"حذف":"Retirer";remove.onclick=()=>{cart=cart.filter(x=>x.id!==item.id);save("zoro_cart",cart);renderCart()};
+ row.append(label,remove);box.appendChild(row)});
+ if(!cart.length)box.innerHTML='<div class="empty">'+(lang==="ar"?"السلة فارغة. أضف منتجًا للبدء.":"Votre panier est vide.")+'</div>';
+ document.getElementById("cartCount").textContent=count;
+ document.getElementById("total").textContent=(lang==="ar"?"المجموع: ":"Total : ")+money(total);
+}
+function renderOrders(){
+ const box=document.getElementById("ordersList");box.innerHTML="";
+ if(!orders.length){box.innerHTML='<div class="empty">'+(lang==="ar"?"لا توجد طلبات محفوظة على هذا الجهاز بعد.":"Aucune commande enregistrée sur cet appareil.")+'</div>';return}
+ orders.slice().reverse().forEach(o=>{const div=document.createElement("div");div.className="order-card";const h=document.createElement("strong");h.textContent=(lang==="ar"?"طلب رقم ":"Commande #")+o.id;const p=document.createElement("p");p.textContent=(lang==="ar"?"المجموع: ":"Total : ")+money(o.total)+" — "+(lang==="ar"?"الدفع: ":"Paiement : ")+o.payment;const s=document.createElement("small");s.textContent=(lang==="ar"?"الحالة: بانتظار الربط والتأكيد":"Statut : en attente de connexion et confirmation");div.append(h,p,s);box.appendChild(div)});
+}
+document.getElementById("checkoutForm").addEventListener("submit",function(e){
+ e.preventDefault();if(!cart.length){alert(lang==="ar"?"السلة فارغة. أضف منتجًا أولًا.":"Le panier est vide.");return}
+ const customer={name:document.getElementById("customerName").value.trim(),phone:document.getElementById("phone").value.trim(),wilaya:document.getElementById("wilaya").value,address:document.getElementById("address").value.trim(),payment:document.getElementById("payment").value};
+ const total=cart.reduce((sum,item)=>{const p=productsData.find(x=>x.id===item.id);return sum+(p?p.price*item.qty:0)},0);
+ const order={id:Date.now().toString().slice(-8),customer,total,payment:customer.payment,items:cart.map(x=>({...x})),date:new Date().toISOString()};
+ orders.push(order);save("zoro_orders",orders);cart=[];save("zoro_cart",cart);renderCart();renderOrders();this.reset();alert(lang==="ar"?"تم حفظ الطلب تجريبيًا على هذا الجهاز فقط. لم يُرسل إلى المتجر.":"Commande enregistrée localement uniquement; elle n'a pas été envoyée au magasin.");
+});
+document.getElementById("search").addEventListener("input",renderProducts);
+document.getElementById("searchBtn").addEventListener("click",renderProducts);
+document.getElementById("langBtn").addEventListener("click",()=>{
+ lang=lang==="ar"?"fr":"ar";document.documentElement.lang=lang;document.documentElement.dir=lang==="ar"?"rtl":"ltr";
+ document.getElementById("langBtn").textContent=lang==="ar"?"Français":"العربية";
+ document.getElementById("heroTitle").textContent=lang==="ar"?"اكتشف منتجاتك المفضلة":"Découvrez vos produits préférés";
+ document.getElementById("heroText").textContent=lang==="ar"?"منتجات إلكترونية ورقمية في مكان واحد. تصفّح المنتجات وأضف ما تريد إلى السلة.":"Des produits électroniques et numériques au même endroit. Parcourez le catalogue et ajoutez vos articles au panier.";
+ document.getElementById("search").placeholder=lang==="ar"?"ابحث عن منتج...":"Rechercher un produit...";
+ document.getElementById("searchBtn").textContent=lang==="ar"?"بحث":"Rechercher";
+ document.getElementById("catalogTitle").textContent=lang==="ar"?"تسوّق حسب الفئة":"Acheter par catégorie";
+ document.getElementById("cartTitle").textContent=lang==="ar"?"🛒 سلة المشتريات":"🛒 Mon panier";
+ document.getElementById("checkoutTitle").textContent=lang==="ar"?"إتمام الطلب":"Finaliser la commande";
+ document.getElementById("ordersTitle").textContent=lang==="ar"?"📦 طلباتي على هذا الجهاز":"📦 Mes commandes sur cet appareil";
+ renderCategories();renderProducts();renderCart();renderOrders();
+});
+document.getElementById("year").textContent=new Date().getFullYear();
+renderCategories();renderProducts();renderCart();renderOrders();
+</script>
+</body>
+</html>
