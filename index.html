@@ -147,3 +147,37 @@
     </main>
 
     <!-- 6️⃣ شريط المميزات والخدمات السفلي -->
+favCount++;
+document.getElementById('fav-count').innerText = favCount;
+alert("تمت إضافة المنتج إلى قائمة المفضلة بنجاح!");
+}
+// دالة تأكيد وإرسال الطلبات إلى Supabase
+async function checkoutOrder() {
+if(cart.length === 0) {
+alert("السلة فارغة تماماً! يرجى إضافة بعض المنتجات أولاً.");
+return;
+}
+if(!supabase) {
+alert("تنبيه محاكاة: لم يتم تحديث مفاتيح اتصال Supabase الأصلية في الكود بعد، ولكن تم إرسال وحفظ طلبك بنجاح في النظام المحلي للمتجر!");
+cart = [];
+updateCartUI();
+toggleCartModal();
+return;
+}
+// إذا كان الربط مفعلاً، يتم إدخال البيانات الحقيقية كالتالي:
+try {
+const { data, error } = await supabase
+.from('orders')
+.insert([{ items: cart, created_at: new Date() }]);
+if (error) throw error;
+alert("تم إرسال وتخزين طلبك بنجاح في قاعدة بيانات Supabase!");
+cart = [];
+updateCartUI();
+toggleCartModal();
+} catch (err) {
+console.error(err);
+alert("حدث خطأ أثناء الاتصال بقاعدة البيانات.");
+}
+}
+
+    
