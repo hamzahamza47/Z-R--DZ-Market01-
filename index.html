@@ -1,234 +1,730 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#087f5b">
-<title>ZØRØ DZ Market01 | المتجر الجزائري</title>
-<style>
-:root{--green:#087f5b;--green2:#0b9b70;--ink:#202820;--muted:#68736d;--bg:#f4f7f5;--line:#e2e9e5;--white:#fff}
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial,Tahoma,sans-serif;background:var(--bg);color:var(--ink)}
-button,input,select{font:inherit}
-button{cursor:pointer}
-header{background:var(--green);color:white;padding:16px max(16px,calc((100% - 1100px)/2))}
-.brand{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
-.brand h1{font-size:24px;margin:0}
-.brand p{margin:6px 0 0;font-size:13px;opacity:.9}
-.header-actions{display:flex;gap:8px;align-items:center}
-.btn{border:0;border-radius:10px;padding:10px 13px;font-weight:bold}
-.btn-light{background:#fff;color:var(--green)}
-.btn-green{background:var(--green);color:#fff}
-main{max-width:1100px;margin:auto;padding:16px}
-.hero{background:linear-gradient(110deg,#003d26cc,#005c32bb),url(https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&w=1600&q=85) center/cover;border:1px solid #d2ecdf;border-radius:18px;padding:30px 22px;margin:4px 0 18px;color:#fff}.hero h2,.hero p{color:#fff}.hero h2{font-size:30px}
-.hero h2{font-size:25px;margin:0 0 9px;color:#075e45}
-.hero p{line-height:1.8;margin:0 0 15px;color:#40594c}
-.searchrow{display:flex;gap:8px;flex-wrap:wrap}
-input,select{border:1px solid var(--line);border-radius:10px;padding:12px;background:#fff;min-width:0}
-#search{flex:1;min-width:180px}
-.section-title{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:20px 0 12px}
-.section-title h2{font-size:20px;margin:0}
-.categories{display:flex;gap:8px;overflow-x:auto;padding:2px 0 10px}
-.cat{border:1px solid var(--line);background:#fff;border-radius:22px;padding:9px 14px;white-space:nowrap;color:#34443b}
-.cat.active{background:var(--green);color:white;border-color:var(--green)}
-.products{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px}
-.card{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 3px 12px #00000008}
-.product-art{height:145px;display:flex;align-items:center;justify-content:center;background:#edf5f0;overflow:hidden}.product-art img{width:100%;height:100%;object-fit:cover;display:block}.category-art{display:block;font-size:28px;margin-bottom:5px}
-.info{padding:12px}
-.info h3{font-size:16px;margin:0 0 8px}
-.info p{font-size:13px;line-height:1.6;color:var(--muted);margin:0 0 10px;min-height:40px}
-.price{color:var(--green);font-size:18px;font-weight:bold;margin:8px 0 12px}
-.add{width:100%;border:0;border-radius:9px;background:var(--green);color:#fff;padding:10px;font-weight:bold}
-.add:hover,.btn-green:hover{background:#066448}
-.panel{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px;margin-top:20px}
-.panel h2{font-size:19px;margin:0 0 12px}
-.cart-list{display:grid;gap:9px}
-.cart-item{display:flex;align-items:center;justify-content:space-between;gap:10px;border-bottom:1px solid var(--line);padding:8px 0}
-.cart-item:last-child{border-bottom:0}
-.cart-item small{display:block;color:var(--muted);margin-top:5px}
-.remove{background:#fff0f0;color:#a52828;border:0;border-radius:8px;padding:7px 10px}
-.total{font-size:19px;font-weight:bold;margin:15px 0}
-.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-.form-grid input,.form-grid select{width:100%}
-.form-grid .wide{grid-column:1/-1}
-.note{font-size:13px;line-height:1.7;color:var(--muted)}
-.orders{display:grid;gap:8px}
-.order-card{border:1px solid var(--line);border-radius:10px;padding:12px}
-.empty{padding:18px;text-align:center;color:var(--muted);background:#fff;border:1px dashed #cddbd2;border-radius:12px}
-footer{text-align:center;padding:24px 12px;color:var(--muted);font-size:13px}
-.hidden{display:none!important}
-@media(max-width:800px){.products{grid-template-columns:repeat(2,minmax(0,1fr))}.product-art{height:125px}.brand h1{font-size:21px}}
-@media(max-width:420px){main{padding:11px}.products{gap:9px}.info{padding:10px}.info h3{font-size:14px}.product-art{height:110px;font-size:48px}.hero{padding:16px}.hero h2{font-size:22px}.form-grid{grid-template-columns:1fr}.form-grid .wide{grid-column:auto}}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZØRØ DZ Market01</title>
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #007a3d;
+            --secondary-color: #004d26;
+            --bg-light: #f4f6f8;
+            --text-dark: #333333;
+            --text-muted: #777777;
+            --white: #ffffff;
+            --border-color: #e1e4e6;
+            --discount-red: #ea4335;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+        }
+
+        /* Top Bar */
+        .top-bar {
+            background-color: #00331a;
+            color: var(--white);
+            padding: 8px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+        }
+
+        .top-bar-left a {
+            color: var(--white);
+            text-decoration: none;
+            margin-left: 15px;
+            font-weight: bold;
+        }
+
+        .top-bar-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        /* Main Header */
+        .main-header {
+            background-color: var(--white);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--primary-color);
+        }
+
+        .logo i {
+            font-size: 32px;
+        }
+
+        .logo-text h1 {
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+        }
+
+        .logo-text p {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        .search-container {
+            flex: 1;
+            max-width: 500px;
+            margin: 0 30px;
+            position: relative;
+            display: flex;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 20px;
+            border: 1px solid var(--border-color);
+            border-radius: 25px;
+            outline: none;
+            font-size: 14px;
+            background-color: #f8f9fa;
+        }
+
+        .search-btn {
+            position: absolute;
+            left: 5px;
+            top: 5px;
+            bottom: 5px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            padding: 0 20px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .action-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 12px;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .action-item i {
+            font-size: 20px;
+            color: #555;
+            margin-bottom: 4px;
+        }
+
+        .badge {
+            position: absolute;
+            top: -5px;
+            right: -10px;
+            background-color: var(--discount-red);
+            color: var(--white);
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 50%;
+        }
+
+        /* Navigation Navbar */
+        .navbar {
+            background-color: var(--white);
+            border-bottom: 1px solid var(--border-color);
+            padding: 0 5%;
+            display: flex;
+            align-items: center;
+            overflow-x: auto;
+        }
+
+        .all-categories-btn {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 15px 25px;
+            border: none;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links li a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 15px 18px;
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 13px;
+            font-weight: 500;
+            white-space: nowrap;
+            transition: color 0.2s;
+        }
+
+        .nav-links li a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero Banner Section */
+        .hero-section {
+            padding: 20px 5%;
+        }
+
+        .hero-banner {
+            background: linear-gradient(135deg, #0b6623 0%, #00331a 100%);
+            border-radius: 12px;
+            height: 320px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 60px;
+            color: var(--white);
+            overflow: hidden;
+        }
+
+        .hero-text h2 {
+            font-size: 42px;
+            margin-bottom: 15px;
+            font-weight: 800;
+        }
+
+        .hero-text p {
+            font-size: 18px;
+            margin-bottom: 25px;
+            opacity: 0.9;
+        }
+
+        .shop-now-btn {
+            background-color: #00e676;
+            color: #00331a;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .hero-images {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            height: 100%;
+        }
+
+        .hero-images img {
+            max-height: 240px;
+            object-fit: contain;
+        }
+
+        /* Categories Section */
+        .section-title {
+            padding: 20px 5% 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .section-title h3 {
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-title h3 i {
+            color: gold;
+        }
+
+        .view-all {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .categories-grid {
+            padding: 0 5%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+            gap: 15px;
+        }
+
+        .category-card {
+            background-color: var(--white);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 15px 10px;
+            text-align: center;
+            text-decoration: none;
+            color: var(--text-dark);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .category-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .category-card img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            margin-bottom: 10px;
+        }
+
+        .category-card span {
+            font-size: 12px;
+            font-weight: 600;
+            display: block;
+        }
+
+        /* Products Section */
+        .products-grid {
+            padding: 15px 5%;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .product-card {
+            background-color: var(--white);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 15px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: box-shadow 0.2s;
+        }
+
+        .product-card:hover {
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .discount-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: #e8f5e9;
+            color: var(--primary-color);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .wishlist-btn {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: none;
+            border: none;
+            color: #ccc;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .wishlist-btn:hover {
+            color: var(--discount-red);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 160px;
+            object-fit: contain;
+            margin-bottom: 15px;
+            margin-top: 15px;
+        }
+
+        .product-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+            text-decoration: none;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            height: 38px;
+        }
+
+        .rating {
+            color: #ffcc00;
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+
+        .rating span {
+            color: var(--text-muted);
+            margin-right: 5px;
+        }
+
+        .price-container {
+            margin-bottom: 15px;
+        }
+
+        .current-price {
+            font-size: 16px;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .old-price {
+            font-size: 12px;
+            color: var(--text-muted);
+            text-decoration: line-through;
+            margin-right: 8px;
+        }
+
+        .add-to-cart-btn {
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            padding: 10px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            transition: background-color 0.2s;
+        }
+
+        .add-to-cart-btn:hover {
+            background-color: var(--secondary-color);
+        }
+
+        /* Features Bar Footer */
+        .features-bar {
+            background-color: var(--white);
+            padding: 30px 5%;
+            margin-top: 40px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .feature-item i {
+            font-size: 30px;
+            color: var(--primary-color);
+        }
+
+        .feature-text h4 {
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 2px;
+        }
+
+        .feature-text p {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero-banner {
+                height: auto;
+                padding: 30px;
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+            .hero-images {
+                display: none;
+            }
+            .search-container {
+                margin: 0 10px;
+            }
+        }
+    </style>
 </head>
 <body>
-<header>
-  <div class="brand">
-    <div><h1>ZØRØ DZ Market01</h1><p>متجرك الجزائري للمنتجات الإلكترونية والرقمية</p></div>
-    <div class="header-actions">
-      <button class="btn btn-light" onclick="document.getElementById('cartSection').scrollIntoView({behavior:'smooth'})">🛒 السلة (<span id="cartCount">0</span>)</button>
-      <button class="btn btn-light" id="langBtn" type="button">Français</button>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="top-bar-left">
+            <a href="#">DA</a>
+            <a href="#">FR</a>
+        </div>
+        <div>تسوق بأمان وسهولة من أي مكان في الجزائر</div>
+        <div class="top-bar-right">
+            <span>ZØRØ DZ Market01</span>
+        </div>
     </div>
-  </div>
-</header>
-<main>
-  <section class="hero">
-    <h2 id="heroTitle">اكتشف منتجاتك المفضلة</h2>
-    <p id="heroText">منتجات إلكترونية ورقمية في مكان واحد. تصفّح المنتجات وأضف ما تريد إلى السلة.</p>
-    <div class="searchrow">
-      <input id="search" type="search" placeholder="ابحث عن منتج..." aria-label="البحث عن منتج">
-      <button class="btn btn-green" id="searchBtn" type="button">بحث</button>
+
+    <!-- Main Header -->
+    <header class="main-header">
+        <a href="#" class="logo">
+            <i class="fa-solid fa-basket-shopping"></i>
+            <div class="logo-text">
+                <h1>ZØRØ DZ Market01</h1>
+                <p>Électronique • Numérique • Maison • Mode • Auto • Plus</p>
+            </div>
+        </a>
+
+        <div class="search-container">
+            <input type="text" class="search-input" placeholder="ابحث عن منتج، فئة أو علامة تجارية...">
+            <button class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+
+        <div class="header-actions">
+            <div class="action-item">
+                <i class="fa-solid fa-user"></i>
+                <span>حسابي</span>
+            </div>
+            <div class="action-item">
+                <i class="fa-solid fa-heart"></i>
+                <span>المفضلة</span>
+                <span class="badge">0</span>
+            </div>
+            <div class="action-item">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span>السلة</span>
+                <span class="badge">0</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Navbar -->
+    <nav class="navbar">
+        <button class="all-categories-btn">
+            <i class="fa-solid fa-bars"></i> جميع الفئات
+        </button>
+        <ul class="nav-links">
+            <li><a href="#"><i class="fa-solid fa-mobile-screen"></i> الإلكترونيات</a></li>
+            <li><a href="#"><i class="fa-solid fa-laptop"></i> المعلوميات والإكسسوارات</a></li>
+            <li><a href="#"><i class="fa-solid fa-blender"></i> المنزل والمطبخ</a></li>
+            <li><a href="#"><i class="fa-solid fa-shirt"></i> الأزياء والموضة</a></li>
+            <li><a href="#"><i class="fa-solid fa-car-battery"></i> السيارات وقطع الغيار</a></li>
+            <li><a href="#"><i class="fa-solid fa-couch"></i> الأثاث والديكور</a></li>
+            <li><a href="#"><i class="fa-solid fa-dumbbell"></i> الرياضة والترفيه</a></li>
+            <li><a href="#"><i class="fa-solid fa-gamepad"></i> الألعاب والمنتجات الرقمية</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-banner">
+            <div class="hero-text">
+                <h2>كل ما تحتاجه في مكان واحد</h2>
+                <p>إلكترونيات - سيارات - أثاث - أحذية - منزلية - ألعاب - وأكثر...</p>
+                <a href="#" class="shop-now-btn">
+                    <i class="fa-solid fa-cart-shopping"></i> تسوق الآن
+                </a>
+            </div>
+            <div class="hero-images">
+                <!-- Fallback solid colored box placeholders to match colors -->
+                <div style="width: 150px; height: 200px; background: rgba(255,255,255,0.1); border-radius: 8px;"></div>
+                <div style="width: 220px; height: 180px; background: rgba(255,255,255,0.15); border-radius: 8px;"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Icons Section -->
+    <div class="section-title">
+        <h3><i class="fa-solid fa-star"></i> تصفح حسب الفئة</h3>
+        <a href="#" class="view-all">عرض الكل ←</a>
     </div>
-  </section>
+    
+    <section class="categories-grid">
+        <a href="#" class="category-card">
+            <i class="fa-solid fa-mobile-screen-button" style="font-size: 30px; color:#555; margin-bottom:10px;"></i>
+            <span>الهواتف والإكسسوارات</span>
+        </a>
+        <a href="#" class="category-card">
+            <i class="fa-solid fa-laptop" style="font-size: 30px; color:#555; margin-bottom:10px;"></i>
+            <span>الإلكترونيات</span>
+        </a>
+        <a href="#" class="category-card">
+            <i class="fa-solid fa-headphones" style="font-size: 30px; color:#555; margin-bottom:10px;"></i>
+            <span>السمعيات</span>
+        </a>
+        <a href="#" class="category-card">
+            <i class="fa-solid fa-tv" style="font-size: 30px; color:#555; margin-bottom:10px;"></i>
+            <span>التلفزيونات</span>
+        </a>
+        <a href="#" class="category-card">
+            <i class="fa-solid fa-couch" style="font-size: 30px; color:#555; margin-bottom:10px;"></i>
+            <span>الأثاث والديكور</span>
+        </a>
+        <a href="#" class="category-card">
+            <i class="fa-solid fa-blender" style="font-size: 30px; color:#555; margin-bottom:10px;"></i>
+            <span>المنزل والمطبخ</span>
+        </a>
+        <a href="#" class="category-card">
+            <i class="fa-solid fa-car" style="font-size: 30px; color:#555; margin-bottom:10px;"></i>
+            <span>السيارات وقطع الغيار</span>
+        </a>
+        <a href="#" class="category-card">
+            <i class="fa-solid fa-shoe-prints" style="font-size: 30px; color:#555; margin-bottom:10px;"></i>
+            <span>الأحذية</span>
+        </a>
+    </section>
 
-  <div class="section-title"><h2 id="catalogTitle">تسوّق حسب الفئة</h2><span id="productCount" class="note"></span></div>
-  <div class="categories" id="categories"></div>
-  <div class="products" id="products"></div>
+    <!-- Featured Products Section -->
+    <div class="section-title">
+        <h3><i class="fa-solid fa-fire" style="color: red;"></i> منتجات مميزة</h3>
+    </div>
 
-  <section class="panel" id="cartSection">
-    <h2 id="cartTitle">🛒 سلة المشتريات</h2>
-    <div id="cartItems" class="cart-list"></div>
-    <div class="total" id="total">المجموع: 0 دج</div>
-    <h3 id="checkoutTitle">إتمام الطلب</h3>
-    <form id="checkoutForm">
-      <div class="form-grid">
-        <input id="customerName" required maxlength="100" placeholder="الاسم الكامل">
-        <input id="phone" required type="tel" maxlength="30" placeholder="رقم الهاتف">
-        <select id="wilaya" required>
-          <option value="">اختر الولاية</option>
-          <option>أدرار</option><option>الشلف</option><option>الأغواط</option><option>أم البواقي</option><option>باتنة</option><option>بجاية</option><option>بسكرة</option><option>بشار</option><option>البليدة</option><option>البويرة</option><option>تمنراست</option><option>تبسة</option><option>تلمسان</option><option>تيارت</option><option>تيزي وزو</option><option>الجزائر</option><option>الجلفة</option><option>جيجل</option><option>سطيف</option><option>سعيدة</option><option>سكيكدة</option><option>سيدي بلعباس</option><option>عنابة</option><option>قالمة</option><option>قسنطينة</option><option>المدية</option><option>مستغانم</option><option>المسيلة</option><option>معسكر</option><option>ورقلة</option><option>وهران</option><option>البيض</option><option>إليزي</option><option>برج بوعريريج</option><option>بومرداس</option><option>الطارف</option><option>تندوف</option><option>تيسمسيلت</option><option>الوادي</option><option>خنشلة</option><option>سوق أهراس</option><option>تيبازة</option><option>ميلة</option><option>عين الدفلى</option><option>النعامة</option><option>عين تموشنت</option><option>غرداية</option><option>غليزان</option><option>تيميمون</option><option>برج باجي مختار</option><option>أولاد جلال</option><option>بني عباس</option><option>عين صالح</option><option>عين قزام</option><option>تقرت</option><option>جانت</option><option>المغير</option><option>المنيعة</option>
-        </select>
-        <input id="address" required maxlength="200" placeholder="العنوان بالتفصيل">
-        <select id="payment" required>
-          <option value="">طريقة الدفع</option><option value="BaridiMob">بريدي موب</option><option value="CCP">بريد الجزائر (CCP)</option><option value="Bank">تحويل بنكي</option><option value="OnDelivery">الدفع عند الاستلام (إن توفر)</option>
-        </select>
-        <div class="wide"><button class="btn btn-green" type="submit">تأكيد الطلب على هذا الجهاز</button></div>
-      </div>
-    </form>
-    <p class="note">تنبيه: هذه نسخة تجريبية. الطلبات تُحفظ في متصفح هذا الجهاز فقط؛ لم يتم ربط قاعدة بيانات أو بوابة دفع حقيقية. لا ترسل أموالًا قبل التحقق من البائع وبيانات الدفع.</p>
-  </section>
+    <section class="products-grid">
+        <!-- Product 1 -->
+        <div class="product-card">
+            <span class="discount-badge">-8%</span>
+            <button class="wishlist-btn"><i class="fa-regular fa-heart"></i></button>
+            <div style="height:150px; background:#f8f9fa; display:flex; align-items:center; justify-content:center; border-radius:6px;">
+                <i class="fa-solid fa-mobile-screen-button" style="font-size:60px; color:#ccc;"></i>
+            </div>
+            <a href="#" class="product-name">iPhone 15 Pro 256Go</a>
+            <div class="rating">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                <span>(12)</span>
+            </div>
+            <div class="price-container">
+                <span class="current-price">165 000 د.ج</span>
+                <span class="old-price">180 000 د.ج</span>
+            </div>
+            <button class="add-to-cart-btn"><i class="fa-solid fa-cart-shopping"></i> أضف إلى السلة</button>
+        </div>
 
-  <section class="panel">
-    <h2 id="ordersTitle">📦 طلباتي على هذا الجهاز</h2>
-    <div id="ordersList" class="orders"></div>
-    <p class="note">الطلبات التجريبية ليست مرئية للإدارة ولا تُرسل إلى المتجر حتى يتم ربط قاعدة بيانات آمنة.</p>
-  </section>
-</main>
-<footer>© <span id="year"></span> ZØRØ DZ Market01 — نسخة تجريبية</footer>
-<script>
-const productsData = [
- {id:1,name:"سماعات لاسلكية",fr:"Écouteurs sans fil",cat:"electronics",price:3200,icon:"🎧",desc:"سماعات للاستماع اليومي والمكالمات.",descfr:"Écouteurs pour musique et appels."},
- {id:2,name:"ساعة ذكية",fr:"Montre connectée",cat:"electronics",price:5800,icon:"⌚",desc:"ساعة ذكية بتصميم عصري.",descfr:"Montre connectée au design moderne."},
- {id:3,name:"شاحن سريع",fr:"Chargeur rapide",cat:"electronics",price:1800,icon:"🔌",desc:"شاحن للاستخدام اليومي.",descfr:"Chargeur pratique pour le quotidien."},
- {id:4,name:"لوحة مفاتيح",fr:"Clavier",cat:"electronics",price:4200,icon:"⌨️",desc:"لوحة مفاتيح للعمل والدراسة.",descfr:"Clavier pour le travail et les études."},
- {id:5,name:"كتاب إلكتروني",fr:"Livre numérique",cat:"digital",price:900,icon:"📚",desc:"كتاب رقمي تجريبي؛ تحقق من المحتوى قبل الشراء.",descfr:"Livre numérique de démonstration."},
- {id:6,name:"قالب تصميم",fr:"Modèle de design",cat:"digital",price:1200,icon:"🎨",desc:"قالب رقمي قابل للتخصيص.",descfr:"Modèle numérique personnalisable."},
- {id:7,name:"دورة تعليمية",fr:"Cours en ligne",cat:"digital",price:2500,icon:"🎓",desc:"محتوى تعليمي رقمي تجريبي.",descfr:"Contenu éducatif numérique."},
- {id:8,name:"حقيبة يومية",fr:"Sac quotidien",cat:"general",price:2900,icon:"🎒",desc:"حقيبة للاستخدام اليومي.",descfr:"Sac pratique pour tous les jours."},
- {id:9,name:"هاتف ذكي تجريبي",fr:"Smartphone de démonstration",cat:"electronics",price:38900,icon:"📱",desc:"هاتف تجريبي للعرض داخل المتجر.",descfr:"Smartphone de démonstration pour la boutique."},
- {id:10,name:"سماعة رأس للألعاب",fr:"Casque gaming",cat:"electronics",price:6500,icon:"🎮",desc:"سماعة للألعاب والترفيه.",descfr:"Casque pour jeux et divertissement."},
- {id:11,name:"فأرة لاسلكية",fr:"Souris sans fil",cat:"electronics",price:2200,icon:"🖱️",desc:"فأرة لاسلكية للعمل والدراسة.",descfr:"Souris sans fil pour le travail et les études."},
- {id:12,name:"مكبر صوت بلوتوث",fr:"Enceinte Bluetooth",cat:"electronics",price:4700,icon:"🔊",desc:"مكبر صوت محمول للاستماع للموسيقى.",descfr:"Enceinte portable pour écouter de la musique."},
- {id:13,name:"حامل هاتف",fr:"Support téléphone",cat:"electronics",price:950,icon:"📲",desc:"حامل عملي للهاتف على المكتب.",descfr:"Support pratique pour téléphone sur un bureau."},
- {id:14,name:"مصباح مكتبي LED",fr:"Lampe de bureau LED",cat:"electronics",price:2600,icon:"💡",desc:"مصباح مكتبي للدراسة والعمل.",descfr:"Lampe LED pour étudier et travailler."},
- {id:15,name:"قرص تخزين USB",fr:"Clé USB",cat:"electronics",price:1600,icon:"💾",desc:"منتج تجريبي للتخزين ونقل الملفات.",descfr:"Produit de démonstration pour stocker et transférer des fichiers."},
- {id:16,name:"قالب سيرة ذاتية",fr:"Modèle de CV",cat:"digital",price:700,icon:"📄",desc:"قالب رقمي لتنسيق السيرة الذاتية.",descfr:"Modèle numérique pour créer un CV."},
- {id:17,name:"حزمة قوالب منشورات",fr:"Pack de modèles de publications",cat:"digital",price:1500,icon:"🖼️",desc:"حزمة تصميمات تجريبية لمنشورات التواصل.",descfr:"Pack de modèles pour les réseaux sociaux."},
- {id:18,name:"مخطط تنظيم أسبوعي",fr:"Planificateur hebdomadaire",cat:"digital",price:500,icon:"🗓️",desc:"ملف رقمي لتنظيم المهام الأسبوعية.",descfr:"Fichier numérique pour organiser la semaine."},
- {id:19,name:"أيقونات رقمية",fr:"Pack d’icônes numériques",cat:"digital",price:800,icon:"✨",desc:"مجموعة أيقونات تجريبية للتصميم.",descfr:"Collection d’icônes de démonstration."},
- {id:20,name:"خلفيات للهاتف",fr:"Fonds d’écran pour téléphone",cat:"digital",price:400,icon:"🌄",desc:"حزمة خلفيات رقمية للهاتف.",descfr:"Pack de fonds d’écran numériques."},
- {id:21,name:"دفتر ملاحظات",fr:"Carnet de notes",cat:"general",price:650,icon:"📓",desc:"دفتر لتسجيل الأفكار والملاحظات.",descfr:"Carnet pour noter idées et remarques."},
- {id:22,name:"قارورة ماء",fr:"Bouteille d’eau",cat:"general",price:1100,icon:"🥤",desc:"قارورة قابلة لإعادة الاستخدام.",descfr:"Bouteille réutilisable."},
- {id:23,name:"مصباح ليلي",fr:"Veilleuse",cat:"general",price:1300,icon:"🌙",desc:"مصباح صغير لغرفة النوم أو المكتب.",descfr:"Petite lampe pour chambre ou bureau."},
- {id:24,name:"محفظة بطاقات",fr:"Porte-cartes",cat:"general",price:1400,icon:"👛",desc:"محفظة صغيرة للبطاقات.",descfr:"Petit porte-cartes pratique."},
- {id:25,name:"حذاء رياضي",fr:"Chaussures de sport",cat:"shoes",price:6900,icon:"👟",img:"photo-1542291026-7eec264c27ff",desc:"حذاء رياضي تجريبي.",descfr:"Chaussures de sport de démonstration."},
- {id:26,name:"كنبة عصرية",fr:"Canapé moderne",cat:"furniture",price:72000,icon:"🛋️",img:"photo-1555041469-a586c61ea9bc",desc:"كنبة لغرفة الجلوس.",descfr:"Canapé pour le salon."},
- {id:27,name:"سيارة عائلية (عرض تجريبي)",fr:"Voiture familiale (démo)",cat:"cars",price:1690000,icon:"🚗",img:"photo-1492144534655-ae79c964c9d7",desc:"إعلان سيارة تجريبي وليس عرض بيع حقيقي.",descfr:"Annonce automobile fictive, non destinée à la vente."},
- {id:28,name:"طاولة طعام",fr:"Table à manger",cat:"furniture",price:58500,icon:"🪑",img:"photo-161 table dining",desc:"أثاث تجريبي للمنزل.",descfr:"Meuble de démonstration."},
- {id:29,name:"سترة يومية",fr:"Veste casual",cat:"fashion",price:4800,icon:"🧥",img:"photo-1551488831-00ddcb6c6bd3",desc:"سترة تجريبية ضمن الأزياء.",descfr:"Veste de démonstration."},
- {id:30,name:"دراجة هوائية",fr:"Vélo",cat:"sports",price:32000,icon:"🚲",img:"photo-1485965120184-e220f721d03e",desc:"دراجة للترفيه والتنقل.",descfr:"Vélo pour loisirs et déplacements."}
-];
-const categoriesData = [
- {id:"all",ar:"الكل",fr:"Tout"},
- {id:"electronics",ar:"إلكترونيات",fr:"Électronique"},
- {id:"digital",ar:"منتجات رقمية",fr:"Produits numériques"},
- {id:"general",ar:"منتجات أخرى",fr:"Autres produits"},
- {id:"shoes",ar:"الأحذية",fr:"Chaussures"},
- {id:"furniture",ar:"الأثاث والمنزل",fr:"Meubles et maison"},
- {id:"cars",ar:"السيارات",fr:"Automobiles"},
- {id:"fashion",ar:"الأزياء",fr:"Mode"},
- {id:"sports",ar:"الرياضة والتنقل",fr:"Sport et mobilité"}
-];
-let cart = load("zoro_cart",[]);
-let orders = load("zoro_orders",[]);
-let activeCategory = "all";
-let lang = "ar";
-function load(key,fallback){try{const v=JSON.parse(localStorage.getItem(key));return Array.isArray(v)?v:fallback}catch(e){return fallback}}
-function save(key,value){try{localStorage.setItem(key,JSON.stringify(value))}catch(e){}}
-function money(value){return new Intl.NumberFormat(lang==="ar"?"ar-DZ":"fr-DZ").format(value)+" دج"}
-function renderCategories(){
- const box=document.getElementById("categories");box.innerHTML="";
- categoriesData.forEach(c=>{const b=document.createElement("button");b.className="cat"+(activeCategory===c.id?" active":"");b.textContent=({all:"🛍️",electronics:"📱",digital:"💻",general:"🏠",shoes:"👟",furniture:"🛋️",cars:"🚗",fashion:"🧥",sports:"⚽"}[c.id])+" "+c[lang];b.type="button";b.onclick=()=>{activeCategory=c.id;renderCategories();renderProducts()};box.appendChild(b)});
-}
-function renderProducts(){
- const box=document.getElementById("products");box.innerHTML="";
- const query=document.getElementById("search").value.trim().toLowerCase();
- const filtered=productsData.filter(p=>(activeCategory==="all"||p.cat===activeCategory)&&((p.name+" "+p.fr+" "+p.desc+" "+p.descfr).toLowerCase().includes(query)));
- document.getElementById("productCount").textContent=filtered.length+" "+(lang==="ar"?"منتج":"produit(s)");
- if(!filtered.length){box.innerHTML='<div class="empty" style="grid-column:1/-1">لا توجد منتجات مطابقة للبحث.</div>';return}
- filtered.forEach(p=>{
-  const card=document.createElement("article");card.className="card";
-  const art=document.createElement("div");art.className="product-art";art.setAttribute("aria-hidden","true");if(p.img){const im=document.createElement("img");im.src="https://images.unsplash.com/"+p.img+"?auto=format&fit=crop&w=700&q=80";im.alt=lang==="ar"?p.name:p.fr;im.loading="lazy";im.onerror=()=>{art.textContent=p.icon};art.appendChild(im)}else{art.textContent=p.icon}
-  const info=document.createElement("div");info.className="info";
-  const title=document.createElement("h3");title.textContent=lang==="ar"?p.name:p.fr;
-  const desc=document.createElement("p");desc.textContent=lang==="ar"?p.desc:p.descfr;
-  const price=document.createElement("div");price.className="price";price.textContent=money(p.price);
-  const add=document.createElement("button");add.className="add";add.type="button";add.textContent=lang==="ar"?"أضف إلى السلة":"Ajouter au panier";add.onclick=()=>addToCart(p.id);
-  info.append(title,desc,price,add);card.append(art,info);box.appendChild(card);
- });
-}
-function addToCart(id){const found=cart.find(x=>x.id===id);if(found)found.qty++;else cart.push({id,qty:1});save("zoro_cart",cart);renderCart();document.getElementById("cartSection").scrollIntoView({behavior:"smooth",block:"start"})}
-function renderCart(){
- const box=document.getElementById("cartItems");box.innerHTML="";let total=0,count=0;
- cart.forEach(item=>{const p=productsData.find(x=>x.id===item.id);if(!p)return;total+=p.price*item.qty;count+=item.qty;
- const row=document.createElement("div");row.className="cart-item";
- const label=document.createElement("div");label.textContent=(lang==="ar"?p.name:p.fr)+" × "+item.qty;
- const sub=document.createElement("small");sub.textContent=money(p.price*item.qty);label.appendChild(sub);
- const remove=document.createElement("button");remove.className="remove";remove.type="button";remove.textContent=lang==="ar"?"حذف":"Retirer";remove.onclick=()=>{cart=cart.filter(x=>x.id!==item.id);save("zoro_cart",cart);renderCart()};
- row.append(label,remove);box.appendChild(row)});
- if(!cart.length)box.innerHTML='<div class="empty">'+(lang==="ar"?"السلة فارغة. أضف منتجًا للبدء.":"Votre panier est vide.")+'</div>';
- document.getElementById("cartCount").textContent=count;
- document.getElementById("total").textContent=(lang==="ar"?"المجموع: ":"Total : ")+money(total);
-}
-function renderOrders(){
- const box=document.getElementById("ordersList");box.innerHTML="";
- if(!orders.length){box.innerHTML='<div class="empty">'+(lang==="ar"?"لا توجد طلبات محفوظة على هذا الجهاز بعد.":"Aucune commande enregistrée sur cet appareil.")+'</div>';return}
- orders.slice().reverse().forEach(o=>{const div=document.createElement("div");div.className="order-card";const h=document.createElement("strong");h.textContent=(lang==="ar"?"طلب رقم ":"Commande #")+o.id;const p=document.createElement("p");p.textContent=(lang==="ar"?"المجموع: ":"Total : ")+money(o.total)+" — "+(lang==="ar"?"الدفع: ":"Paiement : ")+o.payment;const s=document.createElement("small");s.textContent=(lang==="ar"?"الحالة: بانتظار الربط والتأكيد":"Statut : en attente de connexion et confirmation");div.append(h,p,s);box.appendChild(div)});
-}
-document.getElementById("checkoutForm").addEventListener("submit",function(e){
- e.preventDefault();if(!cart.length){alert(lang==="ar"?"السلة فارغة. أضف منتجًا أولًا.":"Le panier est vide.");return}
- const customer={name:document.getElementById("customerName").value.trim(),phone:document.getElementById("phone").value.trim(),wilaya:document.getElementById("wilaya").value,address:document.getElementById("address").value.trim(),payment:document.getElementById("payment").value};
- const total=cart.reduce((sum,item)=>{const p=productsData.find(x=>x.id===item.id);return sum+(p?p.price*item.qty:0)},0);
- const order={id:Date.now().toString().slice(-8),customer,total,payment:customer.payment,items:cart.map(x=>({...x})),date:new Date().toISOString()};
- orders.push(order);save("zoro_orders",orders);cart=[];save("zoro_cart",cart);renderCart();renderOrders();this.reset();alert(lang==="ar"?"تم حفظ الطلب تجريبيًا على هذا الجهاز فقط. لم يُرسل إلى المتجر.":"Commande enregistrée localement uniquement; elle n'a pas été envoyée au magasin.");
-});
-document.getElementById("search").addEventListener("input",renderProducts);
-document.getElementById("searchBtn").addEventListener("click",renderProducts);
-document.getElementById("langBtn").addEventListener("click",()=>{
- lang=lang==="ar"?"fr":"ar";document.documentElement.lang=lang;document.documentElement.dir=lang==="ar"?"rtl":"ltr";
- document.getElementById("langBtn").textContent=lang==="ar"?"Français":"العربية";
- document.getElementById("heroTitle").textContent=lang==="ar"?"اكتشف منتجاتك المفضلة":"Découvrez vos produits préférés";
- document.getElementById("heroText").textContent=lang==="ar"?"منتجات إلكترونية ورقمية في مكان واحد. تصفّح المنتجات وأضف ما تريد إلى السلة.":"Des produits électroniques et numériques au même endroit. Parcourez le catalogue et ajoutez vos articles au panier.";
- document.getElementById("search").placeholder=lang==="ar"?"ابحث عن منتج...":"Rechercher un produit...";
- document.getElementById("searchBtn").textContent=lang==="ar"?"بحث":"Rechercher";
- document.getElementById("catalogTitle").textContent=lang==="ar"?"تسوّق حسب الفئة":"Acheter par catégorie";
- document.getElementById("cartTitle").textContent=lang==="ar"?"🛒 سلة المشتريات":"🛒 Mon panier";
- document.getElementById("checkoutTitle").textContent=lang==="ar"?"إتمام الطلب":"Finaliser la commande";
- document.getElementById("ordersTitle").textContent=lang==="ar"?"📦 طلباتي على هذا الجهاز":"📦 Mes commandes sur cet appareil";
- renderCategories();renderProducts();renderCart();renderOrders();
-});
-document.getElementById("year").textContent=new Date().getFullYear();
-renderCategories();renderProducts();renderCart();renderOrders();
-</script>
+        <!-- Product 2 -->
+        <div class="product-card">
+            <span class="discount-badge">-10%</span>
+            <button class="wishlist-btn"><i class="fa-regular fa-heart"></i></button>
+            <div style="height:150px; background:#f8f9fa; display:flex; align-items:center; justify-content:center; border-radius:6px;">
+                <i class="fa-solid fa-laptop" style="font-size:60px; color:#ccc;"></i>
+            </div>
+            <a href="#" class="product-name">HP Pavilion 15</a>
+            <div class="rating">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+                <span>(8)</span>
+            </div>
+            <div class="price-container">
+                <span class="current-price">108 000 د.ج</span>
+                <span class="old-price">120 000 د.ج</span>
+            </div>
+            <button class="add-to-cart-btn"><i class="fa-solid fa-cart-shopping"></i> أضف إلى السلة</button>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="product-card">
+            <span class="discount-badge">-12%</span>
+            <button class="wishlist-btn"><i class="fa-regular fa-heart"></i></button>
+            <div style="height:150px; background:#f8f9fa; display:flex; align-items:center; justify-content:center; border-radius:6px;">
+                <i class="fa-solid fa-headphones" style="font-size:60px; color:#ccc;"></i>
+            </div>
+            <a href="#" class="product-name">AirPods Pro (2ème Gén.)</a>
+            <div class="rating">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                <span>(10)</span>
+            </div>
+            <div class="price-container">
+                <span class="current-price">45 800 د.ج</span>
+                <span class="old-price">52 000 د.ج</span>
+            </div>
+            <button class="add-to-cart-btn"><i class="fa-solid fa-cart-shopping"></i> أضف إلى السلة</button>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="product-card">
+            <span class="discount-badge">-6%</span>
+            <button class="wishlist-btn"><i class="fa-regular fa-heart"></i></button>
+            <div style="height:150px; background:#f8f9fa; display:flex; align-items:center; justify-content:center; border-radius:6px;">
+                <i class="fa-solid fa-car" style="font-size:60px; color:#ccc;"></i>
+            </div>
+            <a href="#" class="product-name">Toyota Corolla 2020</a>
+            <div class="rating">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+                <span>(7)</span>
+            </div>
+            <div class="price-container">
+                <span class="current-price">1 690 000 د.ج</span>
+                <span class="old-price">1 800 000 د.ج</span>
+            </div>
+            <button class="add-to-cart-btn"><i class="fa-solid fa-cart-shopping"></i> أضف إلى السلة</button>
+        </div>
+    </section>
+
+    <!-- Store Features Footer -->
+    <section class="features-bar">
+        <div class="feature-item">
+            <i class="fa-solid fa-truck-fast"></i>
+            <div class="feature-text">
+                <h4>Livraison rapide</h4>
+                <p>Partout en Algérie</p>
+            </div>
+        </div>
+        <div class="feature-item">
+            <i class="fa-solid fa-shield-halved"></i>
+            <div class="feature-text">
+                <h4>Paiement sécurisé</h4>
+                <p>Baridimob / CCP / Banque</p>
+            </div>
+        </div>
+        <div class="feature-item">
+            <i class="fa-solid fa-headset"></i>
+            <div class="feature-text">
+                <h4>Service client</h4>
+                <p>7j/7 - 24h/24</p>
+            </div>
+        </div>
+        <div class="feature-item">
+            <i class="fa-solid fa-rotate-left"></i>
+            <div class="feature-text">
+                <h4>Retour facile</h4>
+                <p>Sous 7 jours</p>
+            </div>
+        </div>
+    </section>
+
 </body>
 </html>
